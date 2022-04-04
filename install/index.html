@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Meta -->
+  <title>GNOME OS Nightly Installation Guide</title>
+  <meta name="title" content="GNOME OS Nightly Installation Guide">
+  <meta itemprop="name" content="GNOME OS Nightly Installation Guide">
+  <meta name="description" content="Instructions for installing GNOME OS Nightly on real hardware">
+  <meta itemprop="description" content="Instructions for installing GNOME OS Nightly on real hardware">
+
+  <!-- Twitter -->
+  <meta property="twitter:title" content="GNOME OS Nightly Installation Guide">
+  <meta property="twitter:image" content="https://os.gnome.org/card.png" />
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:description" content="Instructions for installing GNOME OS Nightly on real hardware">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="GNOME OS Nightly Installation Guide">
+  <meta property="og:url" content="https://os.gnome.org">
+  <meta property="og:description" content="Instructions for installing GNOME OS Nightly on real hardware">
+  <meta property="og:image" content="https://os.gnome.org/card.png">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+</head>
+
+<body>
+
+  <div class="top-row">
+    <div class="container">
+
+      <!-- <img src="laptop.svg" class="illustration icon-shadow" alt="Laptop illustration"> -->
+      <img src="../assets/desk.svg" class="illustration icon-shadow" alt="Laptop illustration">
+
+      <h1 class="title">GNOME OS Installation Guide</h1>
+
+      <p class="subtitle">You can run GNOME OS on real hardware now, with a few caveats: Hardware support is limited, there is no dedicated security team, and some features are missing, including disk encryption.</p>
+      <p class="subtitle">This is bleeding edge, in-development software, and not recommended for daily usage if you're not a developer.</p>
+
+    </div>
+  </div>
+
+  <div class="container instructions-row">
+
+    <div class="instructions-step">
+      <h2>1. Prepare USB Drive</h2>
+      <p>The standard GNOME OS Nightly ISO can be installed and should just work on many computers, depending on how well the hardware components are supported by Linux. If you have Intel graphics and Wifi it's likely to work without problems. We are constantly trying to improve hardware support, so if you run into issues with your specific components, please <a href="https://gitlab.gnome.org/GNOME/gnome-build-meta/-/issues/new">report them here</a>.
+
+      <ul>
+        <li>Download the latest <a href="https://os.gnome.org/download/latest/gnome_os_installer.iso">GNOME OS ISO</a></li>
+        <li>Plug in a USB drive and select it in GNOME Disks</li>
+        <li>In the <code>⋮</code> menu select <strong>Restore Disk Image...</strong>, open the ISO and click <strong>Start Restoring...</strong>. <span class="warning">Warning: This erases all data on the USB drive.</span></li>
+      </ul>
+
+    </div>
+
+    <div class="instructions-step">
+      <h2>2. Install from USB</h2>
+      <p>In order to run GNOME OS you need UEFI to be enabled, and secure boot to be disabled.</p>
+
+      <ul>
+        <li>Reboot into BIOS options and disable secure boot</li>
+        <li>Boot from the USB drive</li>
+        <li>Choose <strong>GNOME OS Installer</strong> in the menu</li>
+        <li>Go through the installer, choose a disk, and format it with the GNOME OS image. <span class="warning">Warning: This erases all data on the selected disk.</span></li>
+        <li>Reboot</li>
+        <li>Go through initial setup and create a user</li>
+        <li>Reboot</li>
+      </ul>
+    </div>
+
+    <div class="instructions-step">
+      <h2>3. Post-Install Tips</h2>
+      <p>Now you should have a working GNOME OS setup on real hardware. Since GNOME OS is quite different from a regular distro, here are some tips for how to do common stuff.</p>
+
+      <h3>Update via command line</h3>
+      <p>GNOME OS doesn't have a traditional package manager, it does system updates via OSTree. GNOME Software should work just fine for that, but you can also do updates via terminal like so:</p>
+
+      <code class="code-block">sudo ostree admin upgrade</code>
+
+      <p>After that you can directly reboot into the new image.</p>
+
+      <h3>Switch between user/developer trees</h3>
+      <p>There are two different versions of GNOME OS, user and developer. The developer one has additional things developers need, including git, toolbx, podman, and debug symbols. You can switch to the other branch by changing the active branch and then rebooting.</p>
+
+      <p>Switch to devel tree:</p>
+      <code class="code-block">sudo ostree admin switch gnome-os:gnome-os/master/x86_64-devel</code>
+
+      <p>Switch to user tree:</p>
+      <code class="code-block">sudo ostree admin switch gnome-os:gnome-os/master/x86_64-user</code>
+
+      <h3>Boot into older versions</h3>
+      <p>If an update breaks something, you can always boot into an older version. You can do this quickly by pressing any key during boot to enter the menu, and then choosing a different image from the list.</p>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <a href="https://gnome.org">&copy; 2022 The GNOME Project</a>
+
+    <p>CDN kindly provided by <a href="https://www.cdn77.com/">CDN77</a></p>
+
+    <p>Creative Commons CC-BY-SA</p>
+  </footer>
+
+</body>
+
+</html>
