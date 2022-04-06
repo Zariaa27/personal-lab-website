@@ -1,6 +1,6 @@
 # ZMC Lab Website ⚡
 
-This project is for the personal website hosted at [zmc-lab.xyz](https://zmc-lab.xyz) and contains all it's files. This project is based on and mostly uses code from the GNOME OS website.
+This project is for the personal website hosted at [zmclab.xyz](https://zmclab.xyz) and contains all it's files. This project is based on and mostly uses code from the GNOME OS website.
 
 **⚠ KEEP IN MIND THIS IS STILL BETA CODE ⚠**
 
